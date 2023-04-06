@@ -1,0 +1,7 @@
+version: "3"
+services:
+  fastapi-ml:
+    container_name: fastapi-ml
+    build: .
+    ports:
+      - 9000:9000
