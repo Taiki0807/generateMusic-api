@@ -10,11 +10,11 @@ app = FastAPI(title=settings.PROJECT_NAME)
 app.include_router(heartbeat_router)
 app.include_router(api_router, prefix=settings.API_V1_STR, tags=["ML API"])
 
-app.add_event_handler("startup", start_app_handler(app, settings.MODEL_PATH))
+app.add_event_handler("startup", start_app_handler(app))
 app.add_event_handler("shutdown", stop_app_handler(app))
 
 if __name__ == "__main__":
     # Use this for debugging purposes only
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=8001, log_level="debug")
+    uvicorn.run("app.main:app", host="0.0.0.0", port=8001, log_level="info")
