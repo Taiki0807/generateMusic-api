@@ -1,4 +1,4 @@
-# FastAPI ML Template
+# Riffusion を用いた音楽生成 API
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
@@ -49,6 +49,36 @@ app
     └── model.py         # 機械学習の推論の実装
 ```
 
+## API
+
+### 音楽生成 API
+
+```
+curl -X 'POST' \
+  'http://localhost:9000/api/v1/predict' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "alpha": 0.75,
+  "num_inference_steps": 50,
+  "seed_image_id": "og_beat",
+
+  "start": {
+    "prompt": "church bells on sunday",
+    "seed": 42,
+    "denoising": 0.75,
+    "guidance": 7.0
+  },
+
+  "end": {
+    "prompt": "jazz with piano",
+    "seed": 123,
+    "denoising": 0.75,
+    "guidance": 7.0
+  }
+}'
+```
+
 ## 参考
 
 - [機械学習の推論 WebAPI の実装をテンプレート化して使い回せるようした](https://zenn.dev/yag_ays/articles/eef1a8c8e1ee39)
+- [https://github.com/riffusion/riffusion](https://github.com/riffusion/riffusion)
