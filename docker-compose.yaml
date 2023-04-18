@@ -4,4 +4,4 @@ services:
     container_name: fastapi-ml
     build: .
     ports:
-      - 9000:9000
+      - 8000:8000

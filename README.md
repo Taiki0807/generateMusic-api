@@ -23,7 +23,7 @@ $ sh run.sh
 
 ```sh
 $ docker build -f Dockerfile -t fastapi-ml .
-$ docker run -p 9000:9000 --rm --name fastapi-ml -t -i fastapi-ml
+$ docker run -p 8000:8000 --rm --name fastapi-ml -t -i fastapi-ml
 ```
 
 ### Docker Compose
@@ -55,7 +55,7 @@ app
 
 ```
 curl -X 'POST' \
-  'http://localhost:9000/api/v1/predict' \
+  'http://localhost:8000/api/v1/predict' \
   -H 'Content-Type: application/json' \
   -d '{
   "alpha": 0.75,

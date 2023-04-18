@@ -8,4 +8,4 @@ ADD requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . /code
 ENV PYTHONPATH /code
-CMD ["uvicorn", "app.main:app", "--reload", "--host", "0.0.0.0", "--port", "9000"]
+CMD ["uvicorn", "app.main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
