@@ -19,11 +19,13 @@ class BaseMLModel(ABC):
 class MLModel(BaseMLModel):
     """Sample ML model"""
 
-    def __init__(self, seed_images_dir):
-        self.pipeline = RiffusionPipeline.load_checkpoint(
-            checkpoint="riffusion/riffusion-model-v1",
+    def __init__(self, seed_images_dir, checkpoint, device):
+        print(checkpoint)
+        global PIPELINE
+        self.PIPELINE = RiffusionPipeline.load_checkpoint(
+            checkpoint=checkpoint,
             use_traced_unet=not False,
-            device="cuda",
+            device=device,
         )
         self.seed_images_dir = seed_images_dir
 
@@ -45,11 +47,11 @@ class MLModel(BaseMLModel):
             mask_image = PIL.Image.open(str(mask_image_path)).convert("RGB")
 
         # Execute the model to get the spectrogram image
-        image = self.pipeline.riffuse(inputs, init_image=init_image, mask_image=mask_image)
+        image = self.PIPELINE.riffuse(inputs, init_image=init_image, mask_image=mask_image)
 
         # Reconstruct audio from the image
         params = SpectrogramParams(min_frequency=0, max_frequency=10000)
-        converter = SpectrogramImageConverter(params=params, device=str(self.pipeline.device))
+        converter = SpectrogramImageConverter(params=params, device=str(self.PIPELINE.device))
         segment = converter.audio_from_spectrogram_image(image, apply_filters=True)
 
         # Export audio to MP3 bytes

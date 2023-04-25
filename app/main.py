@@ -10,7 +10,7 @@ app = FastAPI(title=settings.PROJECT_NAME)
 app.include_router(heartbeat_router)
 app.include_router(api_router, prefix=settings.API_V1_STR, tags=["ML API"])
 
-app.add_event_handler("startup", start_app_handler(app))
+app.add_event_handler("startup", start_app_handler(app, settings.checkpoint, settings.device))
 app.add_event_handler("shutdown", stop_app_handler(app))
 
 if __name__ == "__main__":
