@@ -78,6 +78,10 @@ curl -X 'POST' \
 }'
 ```
 
+## デプロイ
+
+[https://www.cerebrium.ai/](https://www.cerebrium.ai/)
+
 ## 参考
 
 - [機械学習の推論 WebAPI の実装をテンプレート化して使い回せるようした](https://zenn.dev/yag_ays/articles/eef1a8c8e1ee39)
