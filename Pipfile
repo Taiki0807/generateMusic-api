@@ -28,6 +28,7 @@ torch = "*"
 torchaudio = "*"
 torchvision = "*"
 transformers = "*"
+cerebrium = "*"
 
 [dev-packages]
 
