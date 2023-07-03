@@ -48,7 +48,7 @@ class Item(BaseModel):
 def predict(item, run_id, logger):
     item = Item(**item)
 
-    init_image_path = f"/models/seed_images/{item.seed_image_id}.png"
+    init_image_path = f"./seed_images/{item.seed_image_id}.png"
     init_image = PIL.Image.open(str(init_image_path)).convert("RGB")
 
     # fake max ints
